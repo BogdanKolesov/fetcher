@@ -1,16 +1,28 @@
-class GoutService {}
-
-const getResouce = async url => {
-	const res = await fetch(url);
-
-	if (!res.ok) {
-		throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+class GotService {
+	constructor() {
+		this._apiBase = 'https://www.anapioficeandfire.com/api'; //Нижнее подчеркивание -  статичные данные, которые ну нужно трогать ВООБЩЕ
 	}
-	return await res.json();
-};
+	async getResouce(url) {
+		const res = await fetch(`${this._apiBase}${url}`);
 
-getResouce('123')
-	.then(res => console.log('Succes, ', res))
-	.catch(error => console.error(error));
+		if (!res.ok) {
+			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+		}
+		return await res.json();
+	}
+	getAllChatacters() {
+		return this.getResouce('/characters?page=5&pageSize=10');
+	}
+	getChatacter(id) {
+		return this.getResouce(`/characters/${id}`);
+	}
+}
 
-//Доделать
+const got = new GotService();
+
+//Вывод имени персонажа
+got.getAllChatacters().then(res => {
+	console.log(res.forEach(item => console.log(item.name)));
+});
+
+got.getChatacter(130).then(res => console.log(res));
