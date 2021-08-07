@@ -1,14 +1,28 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import GotService from '../../services/gotService';
 
-export default class CharDetail extends Component {
+
+
+///Styled Components
+
+
+///End of Styled Components
+
+
+export default class RandomChar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.updateChar();
     }
+
+    state = {
+        char: {}
+    }
+
+
     render() {
+
         return (
             <div></div>
         )
