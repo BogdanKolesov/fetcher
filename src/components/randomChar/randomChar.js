@@ -64,7 +64,7 @@ export default class RandomChar extends Component {
     onCharLoaded = (char) => {
         this.setState({ char, loading: false })
     }
-    updateChar() {
+    updateChar = () => {
         const id = Math.floor(Math.random() * 2000 + 1); //11-200
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)

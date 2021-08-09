@@ -32,10 +32,13 @@ const ToggleButton = styled.button`
 export default class App extends Component {
     state = {
         showRandomChar: true,
-        error: false
+        error: false,
+        onToggleMessage: 'Toggled',
+        onOpenMessage: 'Opened'
     }
     toggleRandomChar = () => {
         this.setState((state) => {
+
             return {
                 showRandomChar: !state.showRandomChar
             }
@@ -47,10 +50,11 @@ export default class App extends Component {
             return <ErrorMessage />
         }
         const char = this.state.showRandomChar ? <RandomChar /> : null;
+        const message = this.state.showRandomChar ? this.state.onToggleMessage : this.state.onOpenMessage;
         return (
             <AppContainer>
                 {char}
-                <ToggleButton onClick={this.toggleRandomChar}>Toggle random character</ToggleButton>
+                <ToggleButton onClick={this.toggleRandomChar}>{message}</ToggleButton>
             </AppContainer>
         )
     }
