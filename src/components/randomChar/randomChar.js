@@ -7,6 +7,14 @@ import ErrorMessage from '../errorMessage';
 
 
 ///Styled Components
+
+const RandomContainer = styled.div`
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+`
+
 const RandomBlock = styled.div`
     display: inline-flex;
     flex-direction: column;
@@ -14,7 +22,6 @@ const RandomBlock = styled.div`
     border-radius: 4px;
     padding: 4px;
     margin-top: 10px;
-    margin-left: 10px;
 `
 const RandomTitle = styled.h4`
 
@@ -73,11 +80,14 @@ export default class RandomChar extends Component {
 
 
         return (
-            <RandomBlock>
-                {errorMessage}
-                {loader}
-                {content}
-            </RandomBlock>
+            <RandomContainer>
+                <RandomBlock>
+                    {errorMessage}
+                    {loader}
+                    {content}
+                </RandomBlock>
+
+            </RandomContainer>
         );
     }
 }
