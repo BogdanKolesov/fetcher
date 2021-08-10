@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
-import CharDetails from '../charDetails';
-import CharDetail from '../charDetails/charDetails';
 import Header from '../header';
 import ItemList from '../itemList';
 import RandomChar from '../randomChar/';
 import Loader from '../loader/';
 import ErrorMessage from '../errorMessage';
-
+import CharacterPage from '../characterPage/';
 
 ///Styled Components
 
@@ -34,7 +32,18 @@ export default class App extends Component {
         showRandomChar: true,
         error: false,
         onToggleMessage: 'Toggled',
-        onOpenMessage: 'Opened'
+        onOpenMessage: 'Opened',
+        error: false
+    }
+
+    componentDidCatch() {
+        console.log('error')
+        this.setState({
+            error: true
+        })
+    }
+    componentDidMount() {
+
     }
     toggleRandomChar = () => {
         this.setState((state) => {
@@ -45,6 +54,7 @@ export default class App extends Component {
         });
 
     }
+
     render() {
         if (this.state.error) {
             return <ErrorMessage />
@@ -55,7 +65,9 @@ export default class App extends Component {
             <AppContainer>
                 {char}
                 <ToggleButton onClick={this.toggleRandomChar}>{message}</ToggleButton>
+                <CharacterPage />
             </AppContainer>
+
         )
     }
 }
