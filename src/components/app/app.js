@@ -4,15 +4,15 @@ import styled from 'styled-components'
 import Header from '../header';
 import ItemList from '../itemList';
 import RandomChar from '../randomChar/';
-import Loader from '../loader/';
 import ErrorMessage from '../errorMessage';
 import CharacterPage from '../characterPage/';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 ///Styled Components
 
 
 const AppContainer = styled.div`
-    width: 80%;
+    width: 100%;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -62,11 +62,17 @@ export default class App extends Component {
         const char = this.state.showRandomChar ? <RandomChar /> : null;
         const message = this.state.showRandomChar ? this.state.onToggleMessage : this.state.onOpenMessage;
         return (
-            <AppContainer>
-                {char}
-                <ToggleButton onClick={this.toggleRandomChar}>{message}</ToggleButton>
-                <CharacterPage />
-            </AppContainer>
+            <Router>
+                <Header />
+                <AppContainer>
+                    {char}
+                    <ToggleButton onClick={this.toggleRandomChar}>{message}</ToggleButton>
+                    <Route path='/characters' component={CharacterPage} />
+                    {/* <Route path='/characters/:id' component{} /> */}
+                    {/* <Route path='/books' component={BooksPage} />
+                    <Route path='/houses' component={HousesPage} /> */}
+                </AppContainer>
+            </Router>
 
         )
     }

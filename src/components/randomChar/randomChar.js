@@ -42,12 +42,6 @@ const RandomSpan = styled.span`
 
 export default class RandomChar extends Component {
     gotService = new GotService();
-
-    constructor(props) {
-        super(props);
-
-    }
-
     state = {
         char: {},
         loading: true,
@@ -56,11 +50,18 @@ export default class RandomChar extends Component {
 
     componentDidMount() {
         this.updateChar();
-        this.timerId = setInterval(this.updateChar, 4000);
+        this.timerId = setInterval(this.updateChar, 15000);
     }
 
     componentWillUnmount() {
         clearInterval(this.timerId);
+    }
+
+    onCharLoaded = (char) => {
+        this.setState({
+            char,
+            loading: false
+        })
     }
 
     onError = (err) => {
@@ -70,15 +71,13 @@ export default class RandomChar extends Component {
         })
     }
 
-    onCharLoaded = (char) => {
-        this.setState({ char, loading: false })
-    }
     updateChar = () => {
-        const id = Math.floor(Math.random() * 2000 + 1); //11-200
+        const id = Math.floor(Math.random() * 140 + 25); //25-140
         this.gotService.getCharacter(id)
             .then(this.onCharLoaded)
             .catch(this.onError);
     }
+
     render() {
 
         const { char, loading, error } = this.state;
