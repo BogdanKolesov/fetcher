@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import GotService from '../../services/gotService';
 import Loader from '../loader';
 import ErrorMessage from '../errorMessage';
-
+import PropTypes from 'prop-types';
 
 
 ///Styled Components
@@ -45,12 +45,13 @@ export default class RandomChar extends Component {
     state = {
         char: {},
         loading: true,
-        error: false
+        error: false,
+        interval: 4000
     }
 
     componentDidMount() {
         this.updateChar();
-        this.timerId = setInterval(this.updateChar, 15000);
+        this.timerId = setInterval(this.updateChar, this.interval);
     }
 
     componentWillUnmount() {
@@ -99,6 +100,16 @@ export default class RandomChar extends Component {
         );
     }
 }
+
+RandomChar.defaultProps = {
+    interval: 4000
+}
+
+RandomChar.propTypes = {
+    interval: PropTypes.number
+}
+
+
 const View = ({ char }) => {
     const { name, gender, born, died, culture } = char;
     return (

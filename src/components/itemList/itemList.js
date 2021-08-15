@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Loader from '../loader';
+import PropTypes from 'prop-types';
+
 ///Styled Components
 
 const UnorderedList = styled.ul`
@@ -25,6 +27,13 @@ export default class ItemList extends Component {
 
     state = {
         itemList: null
+    }
+
+    static defaultProps = {
+        //Тут могут быть дефолтные пропсы. Удобная штука
+    }
+    static propTypes = {
+        onItemSelected: PropTypes.func
     }
 
     componentDidMount() {
@@ -71,3 +80,4 @@ export default class ItemList extends Component {
         );
     }
 }
+
