@@ -10,11 +10,11 @@ const UnorderedList = styled.ul`
 const ListItem = styled.li`
     padding: 5px;
     margin-top: 2px;
-    border: 1px solid black;
+    border: 1px solid #C5CAE9;
     border-radius: 5px;
     list-style: none;
     &:hover{
-        background-color: red;
+        background-color: #4CAF50;
         cursor: pointer;
     }
 `

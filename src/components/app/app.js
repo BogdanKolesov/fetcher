@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-    Switch,
-    Redirect,
-    useLocation
+    BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 
 
@@ -39,10 +34,10 @@ const ToggleButton = styled.button`
 
 export default class App extends Component {
     state = {
-        showRandomChar: true,
+        showRandomChar: false,
         error: false,
-        onToggleMessage: 'Toggled',
-        onOpenMessage: 'Opened',
+        onToggleMessage: 'Opened',
+        onOpenMessage: 'Toggled',
     }
 
     componentDidCatch() {

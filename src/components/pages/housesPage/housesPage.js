@@ -41,10 +41,10 @@ export default class HousesPage extends Component {
             <ItemDetails
                 itemId={this.state.selectedHouse}
                 getData={this.gotService.getHouse} >
-                <Field field='region' label='Region' />
-                <Field field='words' label='Words' />
-                <Field field='titles' label='Titles' />
-                <Field field='ancestralWeapons' label='Ancestral Weapons' />
+                <Field field='region' label='Region: ' />
+                <Field field='words' label='Words: ' />
+                <Field field='titles' label='Titles: ' />
+                <Field field='ancestralWeapons' label='Ancestral Weapons: ' />
             </ItemDetails>
         )
 

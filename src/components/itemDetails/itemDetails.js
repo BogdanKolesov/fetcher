@@ -6,12 +6,18 @@ import styled from 'styled-components'
 ///Styled Components
 
 const ItemBlock = styled.div`
-
+    background-color: #FFFFFF;
+    border: 1px solid #3F51B5;
+    border-radius: 5px;
+    max-width: 500px;
+    min-width: 300px;
+    padding: 5px;
 `
 const ItemName = styled.h4`
 
 `
 const ItemUnorderedList = styled.ul`
+
 
 `
 
@@ -26,7 +32,7 @@ const ItemSpan = styled.span`
 
 const SelectError = styled.span`
     color: #ff0000;
-    border: 2px solid #ff0000;
+    border: 2px solid #C5CAE9;
     padding: 3px;
 `
 ///End of Styled Components
