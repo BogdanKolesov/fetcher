@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import Header from '../header';
-import ItemList from '../itemList';
 import RandomChar from '../randomChar/';
-import ErrorMessage from '../errorMessage';
-import CharacterPage from '../characterPage/';
+import ErrorMessage from '../errorMessage/';
+import CharacterPage from '../pages/characterPage/';
+import HousesPage from '../pages/housesPage/';
+import { BooksPage, BooksItem } from '../pages/booksPage/';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 ///Styled Components
@@ -33,7 +34,6 @@ export default class App extends Component {
         error: false,
         onToggleMessage: 'Toggled',
         onOpenMessage: 'Opened',
-        error: false
     }
 
     componentDidCatch() {
@@ -67,10 +67,14 @@ export default class App extends Component {
                 <AppContainer>
                     {char}
                     <ToggleButton onClick={this.toggleRandomChar}>{message}</ToggleButton>
+                    <Route path='/' component={() => <h1>Welcome to GOT DB</h1>} exact />
                     <Route path='/characters' component={CharacterPage} />
-                    {/* <Route path='/characters/:id' component{} /> */}
-                    {/* <Route path='/books' component={BooksPage} />
-                    <Route path='/houses' component={HousesPage} /> */}
+                    <Route path='/books' component={BooksPage} exact />
+                    <Route path='/books/:id' render={({ match }) => {
+                        const { id } = match.params;
+                        return <BooksItem bookId={id} />
+                    }} />
+                    <Route path='/houses' component={HousesPage} />
                 </AppContainer>
             </Router>
 

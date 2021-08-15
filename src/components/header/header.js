@@ -29,9 +29,9 @@ export default class Header extends Component {
             <HeaderBlock>
                 <HeaderTitle> <Link to='/' exact >Title</Link></HeaderTitle>
                 <HeaderList>
-                    <HeaderItem><Link to='/characters' exact>Characters</Link></HeaderItem>
-                    <HeaderItem><Link to='/books' exact>Books</Link></HeaderItem>
-                    <HeaderItem><Link to='/houses' exact>Houses</Link></HeaderItem>
+                    <HeaderItem><Link to='/characters/' exact>Characters</Link></HeaderItem>
+                    <HeaderItem><Link to='/books/'>Books</Link></HeaderItem>
+                    <HeaderItem><Link to='/houses/' exact>Houses</Link></HeaderItem>
                 </HeaderList>
             </HeaderBlock>
         )

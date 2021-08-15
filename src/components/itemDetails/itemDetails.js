@@ -70,31 +70,21 @@ export default class ItemDetails extends Component {
             })
     }
     render() {
-        if (!this.state.char) {
-            return (<SelectError>Please select a character</SelectError>)
-        }
-        const { name, gender, born, died, culture } = this.state.char;
 
+        if (!this.state.item) {
+            return <SelectError>Please select item in the list</SelectError>
+        }
+        const { item } = this.state;
+        const { name } = item;
         return (
             <ItemBlock>
                 <ItemName>{name}</ItemName>
-                <ItemUnorderedList>
-                    <ItemListItem>
-                        <ItemSpan>Gender</ItemSpan>
-                        <ItemSpan>{gender}</ItemSpan>
-                    </ItemListItem>
-                    <ItemListItem>
-                        <ItemSpan>Born</ItemSpan>
-                        <ItemSpan>{born}</ItemSpan>
-                    </ItemListItem>
-                    <ItemListItem>
-                        <ItemSpan>Died</ItemSpan>
-                        <ItemSpan>{died}</ItemSpan>
-                    </ItemListItem>
-                    <ItemListItem>
-                        <ItemSpan>Culture</ItemSpan>
-                        <ItemSpan>{culture}</ItemSpan>
-                    </ItemListItem>
+                <ItemUnorderedList className="list-group list-group-flush">
+                    {
+                        React.Children.map(this.props.children, (child) => {
+                            return React.cloneElement(child, { item })
+                        })
+                    }
                 </ItemUnorderedList>
             </ItemBlock>
         )

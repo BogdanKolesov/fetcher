@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import ItemDetails from '../itemDetails/';
 import Loader from '../loader';
 ///Styled Components
 
@@ -9,7 +8,15 @@ const UnorderedList = styled.ul`
 `
 
 const ListItem = styled.li`
-
+    padding: 5px;
+    margin-top: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+    list-style: none;
+    &:hover{
+        background-color: red;
+        cursor: pointer;
+    }
 `
 
 ///End of Styled Components
