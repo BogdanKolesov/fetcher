@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+    Switch,
+    Redirect,
+    useLocation
+} from "react-router-dom";
+
 
 import Header from '../header';
 import RandomChar from '../randomChar/';
@@ -7,7 +16,7 @@ import ErrorMessage from '../errorMessage/';
 import CharacterPage from '../pages/characterPage/';
 import HousesPage from '../pages/housesPage/';
 import { BooksPage, BooksItem } from '../pages/booksPage/';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import NotFound from '../pages/notFound/';
 
 ///Styled Components
 
@@ -67,15 +76,19 @@ export default class App extends Component {
                 <AppContainer>
                     {char}
                     <ToggleButton onClick={this.toggleRandomChar}>{message}</ToggleButton>
-                    <Route path='/' component={() => <h1>Welcome to GOT DB</h1>} exact />
-                    <Route path='/characters' component={CharacterPage} />
-                    <Route path='/books' component={BooksPage} exact />
-                    <Route path='/books/:id' render={({ match }) => {
-                        const { id } = match.params;
-                        return <BooksItem bookId={id} />
-                    }} />
-                    <Route path='/houses' component={HousesPage} />
+                    <Switch>
+                        <Route path='/' component={() => <h1>Welcome to GOT DB</h1>} exact />
+                        <Route path='/characters' component={CharacterPage} />
+                        <Route path='/books' component={BooksPage} exact />
+                        <Route path='/books/:id' render={({ match }) => {
+                            const { id } = match.params;
+                            return <BooksItem bookId={id} />
+                        }} />
+                        <Route path='/houses' component={HousesPage} />
+                        <Route component={NotFound} />
+                    </Switch>
                 </AppContainer>
+
             </Router>
 
         )
