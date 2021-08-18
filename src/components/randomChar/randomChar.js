@@ -18,7 +18,7 @@ const RandomContainer = styled.div`
 const RandomBlock = styled.div`
     display: inline-flex;
     flex-direction: column;
-    border: 2px solid #C5CAE9;
+    border: 2px solid ${props => props.theme.colors.accent};
     border-radius: 4px;
     padding: 4px;
     margin-top: 10px;

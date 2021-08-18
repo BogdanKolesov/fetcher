@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 const HeaderBlock = styled.header`
     display: flex;
     justify-content: space-between;
-    background-color: #303F9F;
+    background-color: ${props => props.theme.colors.main};
     padding-left: 20px;
     padding-right: 20px;
 `
 const HeaderTitle = styled.h3`
     a{
-        color: #FFFFFF;
+        color: ${props => props.theme.colors.text};
         text-decoration: none;
     }
 `
@@ -26,7 +26,7 @@ const HeaderItem = styled.li`
     margin: 5px;
     list-style-type: none;
     a{
-        color: #FFFFFF;
+        color: ${props => props.theme.colors.text};
         text-decoration: none;
         &:hover{
             text-decoration: underline;

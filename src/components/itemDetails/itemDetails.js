@@ -6,8 +6,7 @@ import styled from 'styled-components'
 ///Styled Components
 
 const ItemBlock = styled.div`
-    background-color: #FFFFFF;
-    border: 1px solid #3F51B5;
+    border: 1px solid ${props => props.theme.colors.borders};
     border-radius: 5px;
     max-width: 500px;
     min-width: 300px;
@@ -31,8 +30,8 @@ const ItemSpan = styled.span`
 `
 
 const SelectError = styled.span`
-    color: #ff0000;
-    border: 2px solid #C5CAE9;
+    color: ${props => props.theme.colors.error};
+    border: 2px solid ${props => props.theme.colors.accent};
     padding: 3px;
 `
 ///End of Styled Components
